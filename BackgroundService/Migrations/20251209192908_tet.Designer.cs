@@ -4,6 +4,7 @@ using BackgroundService.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackgroundService.Migrations
 {
     [DbContext(typeof(BackgroundServiceContext))]
-    partial class BackgroundServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20251209192908_tet")]
+    partial class tet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,7 @@ namespace BackgroundService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("NbWins")
+                    b.Property<int>("NBWins")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")

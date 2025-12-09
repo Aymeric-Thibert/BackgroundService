@@ -1,9 +1,9 @@
 <div style="width:400px" class="container">
   <form class="borderedZone">
     <div class="loginZone" *ngIf="!isLoggedIn()">
-      <mat-form-field  style="width: 100%;">
+      <mat-form-field style="width: 100%;">
         <mat-label>Nom d'usager</mat-label>
-        <input matInput type="text" [(ngModel)]="account.username" name="username"/>
+        <input matInput type="text" [(ngModel)]="account.username" name="username" />
       </mat-form-field>
     </div>
     <div class="loginZone" *ngIf="isLoggedIn()">
@@ -20,21 +20,24 @@
 
   <div class="borderedZone" *ngIf="isLoggedIn()" style="margin-top: 32px; height: 130px">
     <div *ngIf="!isConnected">
-      <div >Pas connecté au Hub..</div>
+      <div>Pas connecté au Hub..</div>
       <br>
       <div>
         <button mat-raised-button color="primary" (click)="connectToHub()">Connecter au Hub</button>
       </div>
     </div>
     <div *ngIf="isConnected">
-
-      <div >Connecté! <!-- TODO: Afficher le nb de wins--></div>
+      <div>Connecté! Vous avez eu <b>{{nbWins}}</b> victoires!</div>
       <br>
       <div>
         <button mat-raised-button color="primary" (click)="Increment()">Cliquer</button>
         Clicks dans ce round: <b>{{nbClicks}}</b>
       </div>
-      <!-- Permettre d'acheter un multiplier et afficher le multiplier actuel -->
+      <div>
+        <button [disabled]="nbClicks < multiplierCost" mat-raised-button color="primary" color="accent"
+          (click)="BuyMultiplier()">Acheter pour {{multiplierCost}}</button>
+        Multiplicateur: <b>{{multiplier}}</b>
+      </div>
     </div>
   </div>
 </div>
